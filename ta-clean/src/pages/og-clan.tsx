@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { motion, useInView, AnimatePresence } from 'motion/react';
 import { ChevronDown, Play, X, Quote } from 'lucide-react';
 
@@ -58,7 +58,7 @@ const clanMembers: ClanMember[] = [
   role: 'The Disruptor · Mastermind Behind The Kaos · The Ideas Man',
   bio: 'ROOFY lives at the intersection of chaos and control. Behind the scenes, in game, or in conversation — he pulls people in and doesn\'t let go. The community\'s heartbeat for sure but a real larican a heart with a real serious side when needed.Ohh, not to mention enjoys stirring Alchey up any hance he gets',
   specialty: ['Disrupts anything at a split second when required', 'A true Mastermind in everything he does even if its stirring the pot', 'A True Ideas Man'],
-  quote: 'Chaos isn\'t the enemy. It\'s the raw material.',
+  quote: 'Chaos isnt the enemy. Its the raw material.',
   imageSlot: '/images/og-clan/member-3.png',
   interview: {
     q1: { question: 'What got you into gaming?', answer: 'I needed an outlet. Gaming was always my thing, but OG Clan turned it into something shared. The moment someone in chat said "this changed my night" — I was locked in.Thats what it is all about' },
@@ -123,7 +123,7 @@ function AlchemicalSigil({ className = '' }: {className?: string;}) {
 }
 
 // ─── FadeUp ───────────────────────────────────────────────────────────────────
-function FadeUp({ children, delay = 0, className = '' }: {children: React.ReactNode;delay?: number;className?: string;}) {
+function FadeUp({ children, delay = 0, className = '' }: {children: ReactNode;delay?: number;className?: string;}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   return (

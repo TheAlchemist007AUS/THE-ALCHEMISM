@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { motion, useInView, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
@@ -19,7 +19,7 @@ import {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface CoachingArea {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   tagline: string;
   description: string;
@@ -54,7 +54,7 @@ const coachingAreas: CoachingArea[] = [
   'Develop a performance mindset that compounds over time',
   'Learn to operate from clarity, not anxiety'],
 
-  imageSlot: '/images/pages/coaching/mindset'
+  imageSlot: 'Format & attach this Coaching Hero pic to install image in upload slot for Mindset & Mental Performance .png'
 },
 {
   icon: <Flame size={22} />,
@@ -68,7 +68,7 @@ const coachingAreas: CoachingArea[] = [
   'Build sustainable habits that don\'t require willpower',
   'Create a lifestyle that reflects who you\'re becoming'],
 
-  imageSlot: '/images/pages/coaching/lifestyle'
+  imageSlot: 'Format & attach this Coaching Hero pic to install image in upload slot for Lifestyle Design & Discipline .png'
 },
 {
   icon: <Target size={22} />,
@@ -82,7 +82,7 @@ const coachingAreas: CoachingArea[] = [
   'Grow an engaged audience across platforms',
   'Monetise your brand without selling out'],
 
-  imageSlot: '/images/pages/coaching/growth'
+  imageSlot: ''
 }];
 
 
@@ -197,7 +197,7 @@ function FadeUp({
 
 
 
-}: {children: React.ReactNode;delay?: number;className?: string;}) {
+}: {children: ReactNode;delay?: number;className?: string;}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   return (

@@ -21,7 +21,8 @@
       "@/api/*": ["./src/server/api/*"],
       "@/*": ["./src/*"]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src", "vite.config.ts", "plugins"]
 }
