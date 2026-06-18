@@ -398,8 +398,8 @@ export default function GamingPage() {
 
                 {/* Day + time */}
                 <h3
-                className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-200"
-                style={{ fontFamily: 'var(--font-heading)' }} className="stream-heading">
+                className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-200 stream-heading"
+                style={{ fontFamily: 'var(--font-heading)' }}>
 
                   {stream.day}
                 </h3>
