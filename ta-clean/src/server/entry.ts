@@ -10,14 +10,15 @@ import ogGet from "./api/og/GET";
 // </api-imports>
 import { seoRoutes } from "../lib/seo-routes";
 
-	if (process.env.GODADDY_API_BASE_URL) return;
-	const hostOnly = process.env.VITE_GODADDY_API_HOST;
-	if (!hostOnly) return;
-	const normalizedHost = hostOnly.replace(/^https?:\/\//, "").trim();
-	if (!normalizedHost) return;
-	process.env.GODADDY_API_BASE_URL = `https://${normalizedHost}`;
+if (!process.env.GODADDY_API_BASE_URL) {
+  const hostOnly = process.env.VITE_GODADDY_API_HOST;
+  if (hostOnly) {
+    const normalizedHost = hostOnly.replace(/^https?:\/\//, "").trim();
+    if (normalizedHost) {
+      process.env.GODADDY_API_BASE_URL = `https://${normalizedHost}`;
+    }
+  }
 }
-
 
 const app = express();
 

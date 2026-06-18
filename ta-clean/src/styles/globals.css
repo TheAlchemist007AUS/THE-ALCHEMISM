@@ -90,6 +90,18 @@
     animation-name: fadeIn;
   }
 
+  .text-shadow-glow {
+    text-shadow: 0 0 60px rgba(201,146,42,0.2);
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 0 40px rgba(201,146,42,0.5);
+  }
+
+  .bg-gradient-alchemism {
+    background: linear-gradient(to bottom right, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;

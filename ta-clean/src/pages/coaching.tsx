@@ -54,7 +54,7 @@ const coachingAreas: CoachingArea[] = [
   'Develop a performance mindset that compounds over time',
   'Learn to operate from clarity, not anxiety'],
 
-  imageSlot: 'Format & attach this Coaching Hero pic to install image in upload slot for Mindset & Mental Performance .png'
+  imageSlot: '/images/pages/coaching/mindset-mental-performance.svg'
 },
 {
   icon: <Flame size={22} />,
@@ -68,7 +68,7 @@ const coachingAreas: CoachingArea[] = [
   'Build sustainable habits that don\'t require willpower',
   'Create a lifestyle that reflects who you\'re becoming'],
 
-  imageSlot: 'Format & attach this Coaching Hero pic to install image in upload slot for Lifestyle Design & Discipline .png'
+  imageSlot: '/images/pages/coaching/lifestyle-design-discipline.svg'
 },
 {
   icon: <Target size={22} />,
@@ -82,7 +82,7 @@ const coachingAreas: CoachingArea[] = [
   'Grow an engaged audience across platforms',
   'Monetise your brand without selling out'],
 
-  imageSlot: ''
+  imageSlot: '/images/pages/coaching/content-creation-personal-brand.svg'
 }];
 
 
@@ -90,24 +90,24 @@ const testimonials: Testimonial[] = [
 {
   quote:
   'Three months in and I\'ve completely rebuilt how I approach my day. The mindset work alone was worth ten times what I paid. I\'m not the same person who signed up.',
-  name: 'Jordan K.',
-  handle: '@jordank_creates',
+  name: 'Steff D.',
+  handle: '@steff_creates',
   tier: 'Inner Circle',
   rating: 5
 },
 {
   quote:
-  'I\'d been trying to start my content channel for two years. After one session with the OG Clan coaching framework, I had a clear plan and posted my first video within a week. Now I\'m at 4K subscribers.',
+  'I\'d been trying to start my content channel for two years. After one session with THE ALCHMISM coaching framework, I had a clear plan and posted my first video within a week. Now I\'m at 4K subscribers.',
   name: 'Mia T.',
   handle: '@mia.transmutes',
-  tier: 'OG Tier',
+  tier: 'Tier-3',
   rating: 5
 },
 {
   quote:
-  'The lifestyle design module changed everything. I stopped trying to be productive and started being intentional. Completely different energy.',
-  name: 'Remy A.',
-  handle: '@remyalchemy',
+  'Ive had Stuart work along side of me on and off for over the last few years, when he gave me the heads up about his new project, I instantly knew he was about to embark no something quite special. Not only is it his professionalism but the unique way he works with you, previous lifestyle Coaching I have done with Stuart was a journey into my new self in itself. Its simply why I always kept in touch and used his services when I felt I needed it. I always felt energized and motivated. The lifestyle design moduke, I know will be nothing short of transformative. I will definately be taking part in the upcoming sessions. ', 
+  name: 'Ramon D.',
+  handle: '@ramon.alchemy',
   tier: 'Inner Circle',
   rating: 5
 },
@@ -224,8 +224,7 @@ function FAQItem({ faq, index }: {faq: FAQ;index: number;}) {
 
         <div className="flex items-center justify-between gap-4 p-6">
           <span
-            className="text-sm font-semibold text-foreground"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="text-sm font-semibold text-foreground font-heading">
 
             {faq.question}
           </span>
@@ -291,8 +290,7 @@ function CoachingCard({ area, index }: {area: CoachingArea;index: number;}) {
           {area.tagline}
         </p>
         <h3
-          className="text-2xl md:text-3xl font-bold tracking-wide text-foreground mb-4 group-hover:text-primary transition-colors duration-300"
-          style={{ fontFamily: 'var(--font-heading)' }}>
+          className="text-2xl md:text-3xl font-bold tracking-wide text-foreground mb-4 group-hover:text-primary transition-colors duration-300 font-heading">
 
           {area.title}
         </h3>
@@ -351,9 +349,7 @@ export default function CoachingPage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/pages/coaching/hero)` }} />
+        <div className="absolute inset-0 bg-cover bg-center bg-[url('/images/pages/coaching/hero.svg')]" />
 
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/65 to-background" />
 
@@ -383,16 +379,10 @@ export default function CoachingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' as const }}
-            className="text-6xl md:text-7xl font-bold tracking-widest text-foreground mb-6"
-            style={{
-              fontFamily: 'var(--font-heading)',
-              textShadow: '0 0 60px rgba(201,146,42,0.2)'
-            }}>
+            className="text-6xl md:text-7xl font-bold tracking-widest text-foreground mb-6 font-heading text-shadow-glow">
 
             COACHING &{' '}
-            <span
-              className="text-primary"
-              style={{ textShadow: '0 0 40px rgba(201,146,42,0.5)' }}>
+            <span className="text-primary text-shadow-soft">
 
               LIFESTYLE
             </span>
@@ -416,8 +406,7 @@ export default function CoachingPage() {
 
             <a
               href="#coaching-areas"
-              className="px-8 py-3 bg-primary text-background text-sm font-bold tracking-widest uppercase hover:opacity-90 transition-opacity"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="px-8 py-3 bg-primary text-background text-sm font-bold tracking-widest uppercase hover:opacity-90 transition-opacity font-heading">
 
               Explore Coaching
             </a>
@@ -446,8 +435,7 @@ export default function CoachingPage() {
                 <div className="text-primary">{s.icon}</div>
                 <div>
                   <div
-                  className="text-lg font-bold text-foreground"
-                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  className="text-lg font-bold text-foreground font-heading">
 
                     {s.value}
                   </div>
@@ -466,8 +454,7 @@ export default function CoachingPage() {
             The Philosophy
           </p>
           <h2
-            className="text-4xl md:text-5xl font-bold tracking-wider text-foreground mb-8"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="text-4xl md:text-5xl font-bold tracking-wider text-foreground mb-8 font-heading">
 
             Alchemy is a Process
           </h2>
@@ -497,8 +484,7 @@ export default function CoachingPage() {
               How It Works
             </p>
             <h2
-              className="text-4xl md:text-5xl font-bold tracking-wider text-foreground"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="text-4xl md:text-5xl font-bold tracking-wider text-foreground font-heading">
 
               The Four Stages
             </h2>
@@ -513,14 +499,12 @@ export default function CoachingPage() {
                 <div className="hidden lg:block absolute top-8 -right-2 w-4 h-px bg-primary/30 z-10" />
                 }
                   <div
-                  className="text-4xl font-bold text-primary/20 mb-4 group-hover:text-primary/40 transition-colors duration-300"
-                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  className="text-4xl font-bold text-primary/20 mb-4 group-hover:text-primary/40 transition-colors duration-300 font-heading">
 
                     {step.number}
                   </div>
                   <h3
-                  className="text-lg font-bold tracking-widest text-foreground mb-3 group-hover:text-primary transition-colors duration-300"
-                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  className="text-lg font-bold tracking-widest text-foreground mb-3 group-hover:text-primary transition-colors duration-300 font-heading">
 
                     {step.title}
                   </h3>
@@ -539,8 +523,7 @@ export default function CoachingPage() {
             What We Cover
           </p>
           <h2
-            className="text-4xl md:text-5xl font-bold tracking-wider text-foreground"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="text-4xl md:text-5xl font-bold tracking-wider text-foreground font-heading">
 
             Coaching Streams
           </h2>
@@ -565,8 +548,7 @@ export default function CoachingPage() {
               Results
             </p>
             <h2
-              className="text-4xl md:text-5xl font-bold tracking-wider text-foreground"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="text-4xl md:text-5xl font-bold tracking-wider text-foreground font-heading">
 
               What Members Say
             </h2>
@@ -620,8 +602,7 @@ export default function CoachingPage() {
                   Access
                 </p>
                 <h2
-                  className="text-3xl md:text-4xl font-bold tracking-wider text-foreground mb-6"
-                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  className="text-3xl md:text-4xl font-bold tracking-wider text-foreground mb-6 font-heading">
 
                   Ready to Start the Transformation?
                 </h2>
@@ -632,8 +613,7 @@ export default function CoachingPage() {
                 <div className="flex flex-col gap-3">
                   <Link
                     to="/music#membership"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-background text-sm font-bold tracking-widest uppercase hover:opacity-90 transition-opacity"
-                    style={{ fontFamily: 'var(--font-heading)' }}>
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-background text-sm font-bold tracking-widest uppercase hover:opacity-90 transition-opacity font-heading">
 
                     View Membership Tiers <ChevronRight size={14} />
                   </Link>
@@ -682,8 +662,7 @@ export default function CoachingPage() {
               Questions
             </p>
             <h2
-              className="text-4xl font-bold tracking-wider text-foreground"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="text-4xl font-bold tracking-wider text-foreground font-heading">
 
               FAQ
             </h2>
@@ -702,8 +681,7 @@ export default function CoachingPage() {
         <FadeUp className="container mx-auto px-4 text-center max-w-xl">
           <AlchemicalSigil className="w-16 h-16 mx-auto mb-6 opacity-40" />
           <h2
-            className="text-3xl font-bold tracking-widest text-foreground mb-4"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="text-3xl font-bold tracking-widest text-foreground mb-4 font-heading">
 
             The Formula is Waiting
           </h2>

@@ -168,8 +168,7 @@ function InterviewModal({ member, onClose }: {member: ClanMember;onClose: () => 
           <div>
             <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-1">Interview</p>
             <h2
-              className="text-3xl font-bold tracking-widest text-foreground"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="text-3xl font-bold tracking-widest text-foreground font-heading">
 
               {member.codename}
             </h2>
@@ -189,8 +188,7 @@ function InterviewModal({ member, onClose }: {member: ClanMember;onClose: () => 
           <div className="flex gap-3">
             <Quote size={20} className="text-primary shrink-0 mt-0.5" />
             <p
-              className="text-base italic text-foreground/80 leading-relaxed"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="text-base italic text-foreground/80 leading-relaxed font-heading">
 
               {member.quote}
             </p>
@@ -229,12 +227,11 @@ function MemberCard({ member, index, onInterview }: {member: ClanMember;index: n
 
       <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
         {/* Portrait — cinematic poster */}
-        <div className="relative overflow-hidden bg-black" style={{ minHeight: '420px' }}>
+        <div className="relative overflow-hidden bg-black min-h-[420px]">
           <img
             src={member.imageSlot}
             alt={`${member.codename} — OG Clan cinematic poster`}
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            style={{ display: 'block' }} />
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 block" />
 
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card/70 hidden md:block" />
           <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent md:hidden" />
@@ -242,8 +239,7 @@ function MemberCard({ member, index, onInterview }: {member: ClanMember;index: n
           {/* Number badge */}
           <div className="absolute top-4 left-4 w-8 h-8 border border-primary flex items-center justify-center bg-background/60 backdrop-blur-sm">
             <span
-              className="text-xs font-bold text-primary"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="text-xs font-bold text-primary font-heading">
 
               0{member.id}
             </span>
@@ -256,8 +252,7 @@ function MemberCard({ member, index, onInterview }: {member: ClanMember;index: n
             <div className="flex items-start justify-between mb-2">
               <div>
                 <h3
-                  className="text-3xl font-bold tracking-widest text-foreground group-hover:text-primary transition-colors duration-300"
-                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  className="text-3xl font-bold tracking-widest text-foreground group-hover:text-primary transition-colors duration-300 font-heading">
 
                   {member.codename}
                 </h3>
@@ -290,8 +285,7 @@ function MemberCard({ member, index, onInterview }: {member: ClanMember;index: n
           <div className="flex items-center gap-3">
             <button
               onClick={() => onInterview(member)}
-              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-background text-xs font-bold tracking-widest uppercase hover:opacity-90 transition-opacity"
-              style={{ fontFamily: 'var(--font-heading)' }}>
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-background text-xs font-bold tracking-widest uppercase hover:opacity-90 transition-opacity font-heading">
 
               <Play size={12} />
               Read Interview
@@ -371,25 +365,23 @@ export default function OGClanPage() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ zIndex: 0 }}>
+          className="absolute inset-0 w-full h-full object-cover z-0">
           <source src="/video/og-clan-cinematic.mp4" type="video/mp4" />
         </video>
 
         {/* Dark overlay so text reads clearly over the video */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/40 to-background" style={{ zIndex: 1 }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/40 to-background z-[1]" />
 
         {/* Rotating sigil */}
         <motion.div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          style={{ zIndex: 2 }}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-[2]"
           animate={{ rotate: 360 }}
           transition={{ duration: 120, repeat: Infinity, ease: 'linear' as const }}>
 
           <AlchemicalSigil className="w-[600px] h-[600px] opacity-15" />
         </motion.div>
 
-        <div className="relative text-center px-4 max-w-3xl mx-auto" style={{ zIndex: 3 }}>
+        <div className="relative text-center px-4 max-w-3xl mx-auto z-[3]">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -405,10 +397,9 @@ export default function OGClanPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' as const }}
-            className="text-6xl md:text-7xl font-bold tracking-widest text-foreground mb-6"
-            style={{ fontFamily: 'var(--font-heading)', textShadow: '0 0 60px rgba(201,146,42,0.2)' }}>
+            className="text-6xl md:text-7xl font-bold tracking-widest text-foreground mb-6 font-heading text-shadow-glow">
 
-            OG <span className="text-primary" style={{ textShadow: '0 0 40px rgba(201,146,42,0.5)' }}>CLAN</span>
+            OG <span className="text-primary text-shadow-soft">CLAN</span>
           </motion.h1>
 
           <motion.p
@@ -435,8 +426,7 @@ export default function OGClanPage() {
             map((item) =>
             <div key={item.label}>
                 <div
-                className="text-2xl font-bold text-primary"
-                style={{ fontFamily: 'var(--font-heading)' }}>
+                className="text-2xl font-bold text-primary font-heading">
 
                   {item.value}
                 </div>
@@ -452,8 +442,7 @@ export default function OGClanPage() {
         <FadeUp className="text-center mb-16">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">The Five</p>
           <h2
-            className="text-4xl md:text-5xl font-bold tracking-wider text-foreground"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="text-4xl md:text-5xl font-bold tracking-wider text-foreground font-heading">
 
             Meet the Originals
           </h2>
@@ -479,8 +468,7 @@ export default function OGClanPage() {
         <FadeUp className="container mx-auto px-4 text-center max-w-xl">
           <AlchemicalSigil className="w-20 h-20 mx-auto mb-6 opacity-40" />
           <h2
-            className="text-3xl font-bold tracking-widest text-foreground mb-4"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="text-3xl font-bold tracking-widest text-foreground mb-4 font-heading">
 
             The Formula Continues
           </h2>
@@ -489,8 +477,7 @@ export default function OGClanPage() {
           </p>
           <a
             href="/#join"
-            className="inline-flex items-center px-8 py-4 bg-primary text-background text-sm font-bold tracking-widest uppercase hover:opacity-90 transition-opacity"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="inline-flex items-center px-8 py-4 bg-primary text-background text-sm font-bold tracking-widest uppercase hover:opacity-90 transition-opacity font-heading">
 
             Join the Inner Circle
           </a>

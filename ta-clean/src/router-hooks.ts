@@ -9,9 +9,11 @@ import { useNavigate as useRouterNavigate, useParams as useRouterParams } from '
 import { Path, Params } from './routes';
 
 // Export hooks with type safety
+type NavigateOptions = { replace?: boolean; state?: unknown };
+
 export const useNavigate = () => {
   const navigate = useRouterNavigate();
-  return (to: Path | number, options?: { replace?: boolean; state?: any }) => {
+  return (to: Path | number, options?: NavigateOptions) => {
     if (typeof to === 'number') {
       navigate(to);
     } else {

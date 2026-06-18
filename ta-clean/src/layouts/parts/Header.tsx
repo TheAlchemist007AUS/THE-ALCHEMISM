@@ -3,8 +3,10 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
+type NavItem = { href: string; label: string; locked?: boolean };
+
 // ─── Nav structure ────────────────────────────────────────────────────────────
-const primaryNav = [
+const primaryNav: NavItem[] = [
   { href: '/',          label: 'Home' },
   { href: '/gaming',    label: 'Gaming' },
   { href: '/music',     label: 'Music' },
@@ -13,7 +15,7 @@ const primaryNav = [
   { href: '/blog',      label: 'Blog', locked: true },
 ];
 
-const moreNav = [
+const moreNav: NavItem[] = [
   { href: '/exclusive', label: 'Exclusive',          locked: true },
   { href: '/merch',     label: 'Merch' },
   { href: '/events',    label: 'Events & Collabs',   locked: true },
@@ -74,7 +76,7 @@ function MoreDropdown({ currentPath }: { currentPath: string }) {
                 }`}
               >
                 <span>{item.label}</span>
-                {(item as any).locked && (
+                {item.locked && (
                   <span className="flex items-center gap-1 text-[9px] text-primary/50 border border-primary/20 px-1.5 py-0.5 rounded-sm leading-none tracking-wider ml-2 shrink-0">
                     <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -151,7 +153,7 @@ export default function Header() {
                   }`}
                 >
                   {item.label}
-                  {(item as any).locked && (
+                  {item.locked && (
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-40">
                       <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                     </svg>

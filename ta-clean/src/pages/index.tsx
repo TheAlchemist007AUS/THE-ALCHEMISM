@@ -207,7 +207,11 @@ function CinematicEyeCanvas() {
           const t = px / waveMaxX;
           const envelope = Math.pow(Math.sin(t * Math.PI), 0.7) * (1 - t * 0.3);
           const y = H * w.yBase + Math.sin(px / W * w.freq * Math.PI * 2 + frame * w.speed + w.phaseOffset) * w.amp * envelope;
-          px === 0 ? ctx.moveTo(px, y) : ctx.lineTo(px, y);
+          if (px === 0) {
+            ctx.moveTo(px, y);
+          } else {
+            ctx.lineTo(px, y);
+          }
         }
         ctx.strokeStyle = w.color;
         ctx.lineWidth = w.width;

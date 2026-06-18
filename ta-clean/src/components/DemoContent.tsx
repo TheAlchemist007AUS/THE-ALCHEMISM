@@ -9,15 +9,14 @@ export default function DemoContent() {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Theme-Aware Gradient - Compact for above-the-fold */}
-      <section className="relative overflow-hidden py-8 px-4" style={{ background: `linear-gradient(to bottom right, hsl(var(--primary)), hsl(var(--secondary)))` }}>
+      <section className="relative overflow-hidden py-8 px-4 bg-gradient-alchemism">
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <p className="text-lg md:text-xl text-white/90 mb-4">
             Demo Content, will be replaced with your app
           </p>
           <button 
-            className="px-8 py-3 bg-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
-            style={{ color: `hsl(var(--primary))` }}
-          >
+            className="px-8 py-3 bg-white text-primary font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
+
             Get Started
           </button>
         </div>
@@ -38,8 +37,7 @@ export default function DemoContent() {
             {/* Feature Card 1 - Primary Color */}
             <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
               <div 
-                className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center"
-                style={{ backgroundColor: `hsl(var(--primary))` }}
+                className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center bg-primary"
               >
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -54,8 +52,7 @@ export default function DemoContent() {
             {/* Feature Card 2 - Secondary Color */}
             <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
               <div 
-                className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center"
-                style={{ backgroundColor: `hsl(var(--secondary))` }}
+                className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center bg-secondary"
               >
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -70,8 +67,7 @@ export default function DemoContent() {
             {/* Feature Card 3 - Accent Color */}
             <div className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow">
               <div 
-                className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center"
-                style={{ backgroundColor: `hsl(var(--accent))` }}
+                className="w-10 h-10 rounded-lg mb-3 flex items-center justify-center bg-accent"
               >
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
@@ -105,8 +101,7 @@ export default function DemoContent() {
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent outline-none transition-all"
-                  style={{ focusRingColor: `hsl(var(--ring))` } as any}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-primary focus:ring-2 focus:border-transparent outline-none transition-all"
                   placeholder="Your name"
                 />
               </div>
@@ -118,8 +113,7 @@ export default function DemoContent() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent outline-none transition-all"
-                  style={{ focusRingColor: `hsl(var(--ring))` } as any}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-primary focus:ring-2 focus:border-transparent outline-none transition-all"
                   placeholder="your@email.com"
                 />
               </div>
@@ -132,16 +126,14 @@ export default function DemoContent() {
               <textarea
                 id="message"
                 rows={3}
-                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent outline-none transition-all resize-none"
-                style={{ focusRingColor: `hsl(var(--ring))` } as any}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-primary focus:ring-2 focus:border-transparent outline-none transition-all resize-none"
                 placeholder="Your message..."
               ></textarea>
             </div>
             
             <button
               type="submit"
-              className="w-full py-2 px-4 text-sm text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-[1.02]"
-              style={{ backgroundColor: `hsl(var(--primary))` }}
+              className="w-full py-2 px-4 text-sm text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-[1.02] bg-primary"
             >
               Send Message
             </button>
@@ -151,19 +143,17 @@ export default function DemoContent() {
 
       {/* Call-to-Action Section */}
       <section 
-        className="py-16 px-4"
-        style={{ backgroundColor: `hsl(var(--accent))` }}
+        className="py-16 px-4 bg-accent"
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: `hsl(var(--accent-foreground))` }}>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-accent-foreground">
             Ready to Get Started?
           </h2>
-          <p className="text-xl mb-8" style={{ color: `hsl(var(--accent-foreground) / 0.9)` }}>
+          <p className="text-xl mb-8 text-[rgb(var(--accent-foreground)/0.9)]">
             Join thousands of satisfied users today
           </p>
-          <button className="px-8 py-3 bg-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
-            style={{ color: `hsl(var(--accent))` }}
-          >
+          <button className="px-8 py-3 bg-white text-accent font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
+
             Sign Up Now
           </button>
         </div>

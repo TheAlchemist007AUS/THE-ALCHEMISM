@@ -107,7 +107,7 @@ export default function MerchPage() {
         {/* Background */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/pages/merch/hero)` }}
+          style={{ backgroundImage: `url(/images/pages/merch/hero/MERCH Hero pic to install.png)` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/65 to-background" />
 

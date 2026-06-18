@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Link } from 'react-router-dom';
 import {
@@ -29,20 +29,22 @@ interface GameReview {
   tag?: string;
 }
 
+type Platform = 'Twitch' | 'YouTube' | 'TikTok' | 'Kick';
+
 interface StreamEntry {
-  platform: 'Twitch' | 'YouTube' | 'TikTok' | 'Kick';
+  platform: Platform;
   day: string;
   time: string;
   content: string;
   description: string;
   live: boolean;
-  icon: React.ReactNode;
+  icon: ReactNode;
   href: string;
 }
 
 interface ClipEntry {
   title: string;
-  platform: string;
+  platform: Platform;
   views: string;
   duration: string;
   game: string;
@@ -116,13 +118,13 @@ const streamSchedule: StreamEntry[] = [
 const gameReviews: GameReview[] = [
 {
   id: 1,
-  title: 'Elden Ring: Shadow of the Erdtree',
-  genre: 'Action RPG',
+  title: 'Hellblade: Senuas Sacrifice ',
+  genre: 'Horror RPG',
   rating: 9.5,
   platform: ['PC', 'PS5', 'Xbox'],
-  summary: 'FromSoftware\'s expansion delivers the same punishing brilliance as the base game, with a world that rewards patience and punishes arrogance. The new weapons and boss designs are some of the best in the series.',
-  verdict: 'Essential. If you survived the base game, this is non-negotiable.',
-  imageSlot: '/images/pages/gaming/review-1',
+  summary: 'Enriched visuals and refined combat make this a must-play. The psychological horror elements are more immersive than ever, and the story hits harder with the new content. Set in the Viking age, a broken Celtic warrior embarks on a haunting vision quest into Viking Hell to fight for the soul of her dead lover.',
+  verdict: 'An absolutely visual masterpiece. Created in collaboration with neuroscientists and people who experience psychosis, Hellblade: Senua’s Sacrifice will pull you deep into Senua’s mind.Also available for VR experience which would leave anyone gripping the edge of their seat.',
+  imageSlot: 'c:/Users/stuar/OneDrive/ドキュメント/Streaming & Content Creation BP & Ideas/Logos/websites & socials/HellbladeSenuasSacrifice.jpg.png',
   tag: 'Featured'
 },
 {
@@ -133,7 +135,7 @@ const gameReviews: GameReview[] = [
   platform: ['PC', 'PS5'],
   summary: 'A rare co-op shooter that actually demands teamwork. The live-service model is done right — the community drives the narrative, and every session feels consequential.',
   verdict: 'Best co-op experience in years. Bring friends.',
-  imageSlot: '/images/pages/gaming/review-2'
+  imageSlot: '/images/pages/gaming/review-2.svg'
 },
 {
   id: 3,
@@ -143,7 +145,7 @@ const gameReviews: GameReview[] = [
   platform: ['PC', 'Switch', 'Xbox'],
   summary: 'The wait was worth it. Silksong refines everything that made the original great and adds layers of complexity that will keep speedrunners busy for years.',
   verdict: 'A masterclass in the genre. Instant classic.',
-  imageSlot: '/images/pages/gaming/review-3',
+  imageSlot: '/images/pages/gaming/review-3.svg',
   tag: 'Top Pick'
 }];
 
@@ -155,7 +157,7 @@ const recentClips: ClipEntry[] = [
   views: '24.3K',
   duration: '2:14',
   game: 'Valorant',
-  imageSlot: '/images/pages/gaming/hero'
+  imageSlot: '/images/pages/gaming/hero.svg'
 },
 {
   title: 'First Boss Down — Elden Ring DLC',
@@ -163,7 +165,7 @@ const recentClips: ClipEntry[] = [
   views: '18.7K',
   duration: '4:32',
   game: 'Elden Ring',
-  imageSlot: '/images/pages/gaming/review-1'
+  imageSlot: '/images/pages/gaming/review-1HellbladeSenuasSacrifice.svg'
 },
 {
   title: 'Speed Any% World Record Attempt',
@@ -171,11 +173,11 @@ const recentClips: ClipEntry[] = [
   views: '31.1K',
   duration: '1:08:44',
   game: 'Hollow Knight',
-  imageSlot: '/images/pages/gaming/review-3'
+  imageSlot: '/images/pages/gaming/review-3.svg'
 }];
 
 
-const platformColors: Record<string, string> = {
+const platformColors: Record<Platform, string> = {
   Twitch: '#9146FF',
   YouTube: '#FF0000',
   TikTok: '#69C9D0',
@@ -194,7 +196,7 @@ function AlchemicalSigil({ className = '' }: {className?: string;}) {
 
 }
 
-function FadeUp({ children, delay = 0, className = '' }: {children: React.ReactNode;delay?: number;className?: string;}) {
+function FadeUp({ children, delay = 0, className = '' }: {children: ReactNode;delay?: number;className?: string;}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   return (
@@ -265,9 +267,7 @@ export default function GamingPage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[65vh] flex flex-col items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/pages/gaming/hero)` }} />
+        <div className="absolute inset-0 bg-cover bg-center bg-[url('/images/pages/gaming/hero.svg')]" />
 
         <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/60 to-background" />
 
@@ -292,23 +292,11 @@ export default function GamingPage() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' as const }}
-            className="text-6xl md:text-7xl font-bold tracking-widest text-foreground mb-6"
-            style={{ fontFamily: 'var(--font-heading)', textShadow: '0 0 60px rgba(201,146,42,0.2)' }}>
-
-            GAMING <span className="text-primary" style={{ textShadow: '0 0 40px rgba(201,146,42,0.5)' }}>HUB</span>
-          </motion.h1>
-
-          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' as const }}
-            className="text-muted-foreground leading-relaxed max-w-xl mx-auto mb-10">Reviews, stream schedules, clips, and gaming content. This is where The Alchemist plays.
-
-
-          </motion.p>
+            className="text-muted-foreground leading-relaxed max-w-xl mx-auto mb-10">Reviews, stream schedules, clips, and gaming content. This is where The Alchemist plays.
+          </motion.h1>
 
           {/* Platform links */}
           <motion.div
@@ -318,16 +306,16 @@ export default function GamingPage() {
             className="flex items-center justify-center gap-3 flex-wrap">
 
             {[
-            { label: 'Twitch', href: '#', icon: <Twitch size={16} />, color: '#9146FF' },
-            { label: 'YouTube', href: '#', icon: <Youtube size={16} />, color: '#FF0000' },
-            { label: 'TikTok', href: '#', icon: <Radio size={16} />, color: '#69C9D0' }].
+            { label: 'Twitch', href: '#', icon: <Twitch size={16} />, iconClass: 'text-[#9146FF]' },
+            { label: 'YouTube', href: '#', icon: <Youtube size={16} />, iconClass: 'text-[#FF0000]' },
+            { label: 'TikTok', href: '#', icon: <Radio size={16} />, iconClass: 'text-[#69C9D0]' }].
             map((p) =>
             <a
               key={p.label}
               href={p.href}
               className="flex items-center gap-2 px-4 py-2 border border-border bg-card/60 text-xs font-semibold tracking-widest uppercase text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all duration-200">
 
-                <span style={{ color: p.color }}>{p.icon}</span>
+                <span className={p.iconClass}>{p.icon}</span>
                 {p.label}
                 <ExternalLink size={10} />
               </a>
@@ -350,7 +338,7 @@ export default function GamingPage() {
             <div key={s.label} className="flex items-center gap-3">
                 <div className="text-primary">{s.icon}</div>
                 <div>
-                  <div className="text-lg font-bold text-foreground" style={{ fontFamily: 'var(--font-heading)' }}>{s.value}</div>
+                  <div className="text-lg font-bold text-foreground font-heading">{s.value}</div>
                   <div className="text-xs text-muted-foreground tracking-wide">{s.label}</div>
                 </div>
               </div>
@@ -366,9 +354,7 @@ export default function GamingPage() {
             <div>
               <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Go Live</p>
               <h2
-                className="text-4xl md:text-5xl font-bold tracking-wider text-foreground"
-                style={{ fontFamily: 'var(--font-heading)' }}>
-
+                className="text-4xl md:text-5xl font-bold tracking-wider text-foreground font-heading">
                 Stream Schedule
               </h2>
             </div>
@@ -413,7 +399,7 @@ export default function GamingPage() {
                 {/* Day + time */}
                 <h3
                 className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-200"
-                style={{ fontFamily: 'var(--font-heading)' }}>
+                style={{ fontFamily: 'var(--font-heading)' }} className="stream-heading">
 
                   {stream.day}
                 </h3>
@@ -453,8 +439,7 @@ export default function GamingPage() {
               <div>
                 <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Reviewed</p>
                 <h2
-                  className="text-4xl md:text-5xl font-bold tracking-wider text-foreground"
-                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  className="text-4xl md:text-5xl font-bold tracking-wider text-foreground [font-family:var(--font-heading)]">
 
                   Game Reviews
                 </h2>
@@ -561,10 +546,7 @@ export default function GamingPage() {
           <div className="flex items-end justify-between">
             <div>
               <p className="text-xs font-semibold tracking-[0.3em] uppercase text-primary mb-3">Highlights</p>
-              <h2
-                className="text-4xl md:text-5xl font-bold tracking-wider text-foreground"
-                style={{ fontFamily: 'var(--font-heading)' }}>
-
+              <h2 className="text-4xl md:text-5xl font-bold tracking-wider text-foreground font-heading">
                 Recent Clips
               </h2>
             </div>
@@ -636,8 +618,7 @@ export default function GamingPage() {
         <FadeUp className="container mx-auto px-4 text-center max-w-xl">
           <AlchemicalSigil className="w-16 h-16 mx-auto mb-6 opacity-40" />
           <h2
-            className="text-3xl font-bold tracking-widest text-foreground mb-4"
-            style={{ fontFamily: 'var(--font-heading)' }}>
+            className="text-3xl font-bold tracking-widest text-foreground mb-4 font-heading">
 
             Never Miss a Stream
           </h2>
